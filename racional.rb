@@ -11,11 +11,11 @@ class Fraccion
 	#         denominador es un 1. Ejemplo: (2) -> 2/1
 	#    Una vez se cogen los parámetros, la fracción es guardada en su mínima
 	#    expresión, haciendo uso del Máximo Común Divisor
-		def initialize(*args)
-		if args.size == 2 
-			c = mcd(args[0], args[1])
-			@a = (args[0] / c)
-			@b = (args[1] / c)
+	def initialize(*args)
+		if args.size == 2
+			x = mcd(args[0],args[1])
+			@a = args[0] / x
+			@b = args[1] / x
 		else
 			@a = args[0]
 			@b = 1
@@ -24,30 +24,32 @@ class Fraccion
 
 	# Impresión en pantalla del número racional
 	def to_s
-		if (@b == 1)
-			"#{@a}"
-		else
-			"#{@a}/#{@b}"
-		end	
+		"#{@a}/#{@b}"
 	end
 
 	# Suma
 	def suma(*args)
-		if args.size == 2 
-			x = mcd(args[0], args[1])
-			c = (args[0] / x)
-			d = (args[1] / x)
-		else
-			c = args[0]
-			d = 1
+		# Número a sumar expresado en fracción irreducible
+		x, y = operandoMin(args[0],args[1])
+
+		if (@b == y) # Igual denominador
+			@a += x
+		else         # Distinto denominador
+			den = mcm(@b,y)
+			num = ((den / @b) * @a) + ((den / y) * x)
+			@a = num
+			@b = den
 		end
 
-		if (@b == d) # Igual denominador
-			initialize(@a + c, @b)
-		else         # Distinto denominador
-			x = mcm(@b, d) # Mínimo Común Múltiplo de los denominadores
-			initialize(((x/@b) * @a) + ((x/d) * c), x) # Número fraccional resultado
-		end
+		return @a, @b
+	end
+
+	# DAdo un número c/d, devuelve dicho número reducido en fracción irreducible
+	def operandoMin(c, d)
+		x = mcd(c,d)
+		c = c / x
+		d = d / x
+		return c, d
 	end
 
 	def resta(*args)
@@ -66,6 +68,8 @@ class Fraccion
 			x = mcm(@b, d) # Mínimo Común Múltiplo de los denominadores
 			initialize(((x/@b) * @a) - ((x/d) * c), x) # Número fraccional resultado
 		end
+
+		return @a, @b
 	end
 
 	def producto(*args)
@@ -94,12 +98,3 @@ class Fraccion
 		initialize(@a * d, @b * c)
 	end
 end
-
-A = Fraccion.new(1,3)
-
-A.suma(1,3)
-#A.resta(1)
-#A.producto(2, 3)
-#A.division(1)
-
-puts A

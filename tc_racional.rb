@@ -3,7 +3,12 @@ require "test/unit"
 
 class Test_Fraccion < Test::Unit::TestCase
 
-   def test_simple
-      assert_equal(1, 1, Fraccion.new(1,2))
+   def test_suma
+      assert_equal([2, 1], Fraccion.new(1,1).suma(1,1))
+      assert_equal([17, 10], Fraccion.new(3,2).suma(1,5))
+   end
+
+   def test_resta
+      assert_equal([0, 1], Fraccion.new(4,2).resta(4,2))
    end
 end
