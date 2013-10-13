@@ -3,13 +3,13 @@ LPP - Práctica 5
 Pruebas unitarias
 ---------------------------------
 
-Ejecución
----------
-En el fichero `matrix.rb` se encuentran declaradas las matrices a sumar o multiplicar
+Guión
+-----
+El guión de esta práctica se encuentra en `https://github.com/coromoto/PruebasUnitarias` 
 
-Para ejecutar la práctica, `ruby matrix.rb`
+Desarrollo
+----------
 
-La prensentación de los datos se hace de manera vertical
 
 Autor
 -------
