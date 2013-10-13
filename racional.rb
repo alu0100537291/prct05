@@ -1,12 +1,18 @@
-# Implementar en este fichero la clase para crear objetos racionales
-
 require "./mcd.rb" # Máximo Común Divisor
 require "./mcm.rb" # Mínimo Común Múltiplo
 
 class Fraccion
 
-	def initialize(*args)
-		if args.size == 2
+	# Inicialización del objeto
+	#    El paso del numerador y denominador se hace por parámetros
+	#       - Si se pasan dos números, el primero es el numerador y el segundo
+	#         el denominador. Ejemplo: (2,3) -> 2/3
+	#       - Si se le pasa un número, dicho número es el numerador y el
+	#         denominador es un 1. Ejemplo: (2) -> 2/1
+	#    Una vez se cogen los parámetros, la fracción es guardada en su mínima
+	#    expresión, haciendo uso del Máximo Común Divisor
+		def initialize(*args)
+		if args.size == 2 
 			c = mcd(args[0], args[1])
 			@a = (args[0] / c)
 			@b = (args[1] / c)
@@ -16,17 +22,27 @@ class Fraccion
 		end
 	end
 
+	# Impresión en pantalla del número racional
 	def to_s
-		"#{@a}/#{@b}"
+		if (@b == 1)
+			"#{@a}"
+		else
+			"#{@a}/#{@b}"
+		end	
 	end
 
+	# Suma
 	def suma(c, d)
+		# El número a sumar se hace fracción irreducible
 		min = mcd(c, d)
 		c = (c / min)
 		d = (d / min)
 
-		@a += c
-		@b += d
+		if (@b == d)
+			initialize(@a += c, @b)
+		#else
+			#initialize()
+		end
 	end
 
 	def resta(c, d)
