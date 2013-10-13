@@ -20,8 +20,37 @@ Para la ejecución de los test
    3. `mcm.rb`, método del Mínimo Común Múltiplo
    4. `mcd.rb`, método del Máximo Común Divisor
 
-El guión provee de una clase `Fraccion`
+El guión provee de una clase `Fraccion` para la representación de los números racionales.
+Cada objeto de dicha clase debe representar un número racional reducido a su mínima expresión.
 
+    class Fraccion
+       def initialize(*args)
+          ...
+          Constructor. Almacena un número racional reducido a su mínima expresión
+          ...
+       end
+
+       def to_s
+          ...
+          Cadena con la representación del número racional
+          ...
+       end
+
+       def operandoMin(c, d)
+       end
+
+       def suma(*args)
+       end
+
+       def resta(*args)
+       end
+
+       def producto(*args)
+       end
+
+       def division(*args)
+       end
+    end
 
 Autor
 -------
