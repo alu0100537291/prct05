@@ -1,11 +1,17 @@
 # LPP - Práctica 5 #
 ## Pruebas unitarias ##
 
-### Guión### 
+### Guión ### 
 El guión de esta práctica se encuentra [aquí](https://github.com/coromoto/PruebasUnitarias)
 
-Desarrollo
-----------
+### Práctica ###
+Para la ejecución de la práctica
+   ruby racional.rb
+
+   
+### TEST ###
+Para la ejecución de los test
+   ruby tc_racional.rb
 
 
 Autor
