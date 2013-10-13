@@ -32,31 +32,74 @@ class Fraccion
 	end
 
 	# Suma
-	def suma(c, d)
-		# El número a sumar se hace fracción irreducible
-		min = mcd(c, d)
-		c = (c / min)
-		d = (d / min)
+	def suma(*args)
+		if args.size == 2 
+			x = mcd(args[0], args[1])
+			c = (args[0] / x)
+			d = (args[1] / x)
+		else
+			c = args[0]
+			d = 1
+		end
 
 		if (@b == d) # Igual denominador
 			initialize(@a += c, @b)
 		else         # Distinto denominador
 			x = mcm(@b, d) # Mínimo Común Múltiplo de los denominadores
-			initialize(((x/@b) * @a) + ((x/d) * c), x)
+			initialize(((x/@b) * @a) + ((x/d) * c), x) # Número fraccional resultado
 		end
 	end
 
-	def resta(c, d)
+	def resta(*args)
+		if args.size == 2 
+			x = mcd(args[0], args[1])
+			c = (args[0] / x)
+			d = (args[1] / x)
+		else
+			c = args[0]
+			d = 1
+		end
+
+		if (@b == d) # Igual denominador
+			initialize(@a -= c, @b)
+		else         # Distinto denominador
+			x = mcm(@b, d) # Mínimo Común Múltiplo de los denominadores
+			initialize(((x/@b) * @a) - ((x/d) * c), x) # Número fraccional resultado
+		end
 	end
 
-	def producto(c, d)
+	def producto(*args)
+		if args.size == 2 
+			x = mcd(args[0], args[1])
+			c = (args[0] / x)
+			d = (args[1] / x)
+		else
+			c = args[0]
+			d = 1
+		end
+
+		initialize(@a * c, @b * d)
 	end
 
-	def division(c, d)
+	def division(*args)
+		if args.size == 2 
+			x = mcd(args[0], args[1])
+			c = (args[0] / x)
+			d = (args[1] / x)
+		else
+			c = args[0]
+			d = 1
+		end
+
+		initialize(@a * d, @b * c)
 	end
 end
 
 A = Fraccion.new(3, 2)
-A.suma(1, 5)
+
+#A.suma(1)
+#A.resta(1)
+#A.producto(2, 3)
+A.division(1)
 
 puts A
