@@ -27,10 +27,23 @@ class Fraccion
 		"#{@a}/#{@b}"
 	end
 
+	# Dado un número c/d, devuelve dicho número reducido en fracción irreducible
+	def operandoMin(c, d)
+		x = mcd(c,d)
+		c = c / x
+		d = d / x
+		return c, d
+	end
+
 	# Suma
 	def suma(*args)
-		# Número a sumar expresado en fracción irreducible
-		x, y = operandoMin(args[0],args[1])
+		# Número a restar expresado en fracción irreducible
+		if args.size == 2
+			x, y = operandoMin(args[0],args[1])
+		else
+			x = args[0]
+			y = 1
+		end
 
 		if (@b == y) # Igual denominador
 			@a += x
@@ -44,29 +57,22 @@ class Fraccion
 		return @a, @b
 	end
 
-	# DAdo un número c/d, devuelve dicho número reducido en fracción irreducible
-	def operandoMin(c, d)
-		x = mcd(c,d)
-		c = c / x
-		d = d / x
-		return c, d
-	end
-
 	def resta(*args)
-		if args.size == 2 
-			x = mcd(args[0], args[1])
-			c = (args[0] / x)
-			d = (args[1] / x)
+		# Número a restar expresado en fracción irreducible
+		if args.size == 2
+			x, y = operandoMin(args[0],args[1])
 		else
-			c = args[0]
-			d = 1
+			x = args[0]
+			y = 1
 		end
 
-		if (@b == d) # Igual denominador
-			initialize(@a - c, @b)
+		if (@b == y) # Igual denominador
+			@a -= x
 		else         # Distinto denominador
-			x = mcm(@b, d) # Mínimo Común Múltiplo de los denominadores
-			initialize(((x/@b) * @a) - ((x/d) * c), x) # Número fraccional resultado
+			den = mcm(@b,y)
+			num = ((den / @b) * @a) - ((den / y) * x)
+			@a = num
+			@b = den
 		end
 
 		return @a, @b
@@ -74,27 +80,29 @@ class Fraccion
 
 	def producto(*args)
 		if args.size == 2 
-			x = mcd(args[0], args[1])
-			c = (args[0] / x)
-			d = (args[1] / x)
+			x, y = operandoMin(args[0],args[1])
 		else
-			c = args[0]
-			d = 1
+			x = args[0]
+			y = 1
 		end
 
-		initialize(@a * c, @b * d)
+		@a = @a * x
+		@b = @b * y
+
+		return @a, @b
 	end
 
 	def division(*args)
 		if args.size == 2 
-			x = mcd(args[0], args[1])
-			c = (args[0] / x)
-			d = (args[1] / x)
+			x, y = operandoMin(args[0],args[1])
 		else
-			c = args[0]
-			d = 1
+			x = args[0]
+			y = 1
 		end
 
-		initialize(@a * d, @b * c)
+		@a = @a * y
+		@b = @b * x
+
+		return @a, @b
 	end
 end
