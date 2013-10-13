@@ -38,10 +38,11 @@ class Fraccion
 		c = (c / min)
 		d = (d / min)
 
-		if (@b == d)
+		if (@b == d) # Igual denominador
 			initialize(@a += c, @b)
-		#else
-			#initialize()
+		else         # Distinto denominador
+			x = mcm(@b, d) # Mínimo Común Múltiplo de los denominadores
+			initialize(((x/@b) * @a) + ((x/d) * c), x)
 		end
 	end
 
@@ -55,7 +56,7 @@ class Fraccion
 	end
 end
 
-A = Fraccion.new(2, 4)
-A.suma(2, 4)
+A = Fraccion.new(3, 2)
+A.suma(1, 5)
 
 puts A
