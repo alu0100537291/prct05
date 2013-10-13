@@ -5,11 +5,11 @@
 El guión de esta práctica se encuentra [aquí](https://github.com/coromoto/PruebasUnitarias)
 
 ### Ejecución
-Para la ejecución de la práctica
+Para la ejecución de la **práctica**
 
     ruby racional.rb
 
-Para la ejecución de los test
+Para la ejecución de los **test**
 
     ruby tc_racional.rb
 
