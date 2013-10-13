@@ -23,6 +23,7 @@ Para la ejecución de los test
 El guión provee de una clase `Fraccion` para la representación de los números racionales.
 Cada objeto de dicha clase debe representar un número racional reducido a su mínima expresión.
 
+    ```ruby
     class Fraccion
        def initialize(*args)
           ...
@@ -51,6 +52,7 @@ Cada objeto de dicha clase debe representar un número racional reducido a su m�
        def division(*args)
        end
     end
+    ```
 
 Autor
 -------
