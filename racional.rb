@@ -4,18 +4,7 @@ require "./mcd.rb" # Máximo Común Divisor
 require "./mcm.rb" # Mínimo Común Múltiplo
 
 class Fraccion
-=begin
-	def initialize(*args)
-		if args.size == 2
-			@a = args[0]
-			@b = args[1]
-		else
-			@a = args[0]
-			@b = 1
-		end
-	end
-=end
-
+	
 	def initialize(*args)
 		if args.size == 2
 			c = mcd(args[0],args[1])
