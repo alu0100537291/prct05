@@ -18,7 +18,7 @@ class Test_Fraccion < Test::Unit::TestCase
    end
 
    def test_producto
-      assert_equal([1, 1], Fraccion.new(1,1).producto(1,1))    # (1/1) * (1/1) = (1/1)
+      assert_equal([1, 21], Fraccion.new(2,7).producto(1,6))   # (2/7) * (1/6) = (1/21)
       assert_equal([3, -10], Fraccion.new(3,-2).producto(1,5)) # (3/-2) * (1/5) = (3/-10)
       assert_equal([2, 1], Fraccion.new(1,1).producto(2))      # (1/1) * (2) = (2/1)
       assert_equal([1, 1], Fraccion.new(1).producto(1))        # (1) * (1) = (1)

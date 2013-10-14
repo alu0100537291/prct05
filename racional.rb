@@ -50,8 +50,7 @@ class Fraccion
 		else         # Distinto denominador
 			den = mcm(@b,y)
 			num = ((den / @b) * @a) + ((den / y) * x)
-			@a = num
-			@b = den
+			@a, @b = operandoMin(num, den)
 		end
 
 		return @a, @b
@@ -71,8 +70,7 @@ class Fraccion
 		else         # Distinto denominador
 			den = mcm(@b,y)
 			num = ((den / @b) * @a) - ((den / y) * x)
-			@a = num
-			@b = den
+			@a, @b = operandoMin(num, den)
 		end
 
 		return @a, @b
@@ -86,8 +84,7 @@ class Fraccion
 			y = 1
 		end
 
-		@a = @a * x
-		@b = @b * y
+		@a, @b = operandoMin(@a * x, @b * y)
 
 		return @a, @b
 	end
@@ -100,8 +97,7 @@ class Fraccion
 			y = 1
 		end
 
-		@a = @a * y
-		@b = @b * x
+		@a, @b = operandoMin(@a * y, @b * x)
 
 		return @a, @b
 	end
