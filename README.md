@@ -7,11 +7,11 @@ El guión de esta práctica se encuentra [aquí](https://github.com/coromoto/Pru
 ### Ejecución
 Para la ejecución de la **práctica**
 
-    ruby racional.rb
+    rake
 
 Para la ejecución de los **test**
 
-    ruby tc_racional.rb
+    rake test
 
 ### Implementación
 Ésta práctica contiene 4 ficheros:
