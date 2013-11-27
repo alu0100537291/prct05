@@ -1,4 +1,4 @@
-desc "Ejecución de la pŕactica"
+desc "Ejecucion de la pŕactica"
 task :default do
   sh "ruby racional.rb"
 end
